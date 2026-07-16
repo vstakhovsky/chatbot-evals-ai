@@ -1,0 +1,21 @@
+You are reviewing a seed for a synthetic customer support query dataset.
+Each seed describes a type of user or a problem they might face.
+
+Evaluate: Would this plausibly appear in a real fintech support queue?
+
+Consider:
+- Is this scenario realistic for Revolut customers?
+- Is the description specific and grounded, not generic?
+- Does it reflect actual user behavior and communication patterns?
+- For personas: does the description capture meaningful variation in how users interact with support?
+- For problems: is this a genuine support issue users would contact support about?
+
+Mark true if this seed should be included in the dataset.
+Mark false if it feels artificial, stereotypical to the point of unreality, or too generic.
+
+Provide brief reasoning that references specific aspects of the seed.
+
+Seed to evaluate:
+{seed}
+
+Seed type: {seed_type}

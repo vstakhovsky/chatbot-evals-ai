@@ -1,0 +1,6 @@
+{"id": "empty", "description": "No modifier — baseline neutral query"}
+{"id": "poor_internet_connection", "description": "User is in area with weak mobile signal or on train. Short messages, may repeat phrases, abrupt endings due to connectivity issues. No time for back-and-forth."}
+{"id": "anxious_security_fear", "description": "User has received fraud warning or heard about scams. Extra cautious language, emphasizes urgency, mentions security repeatedly. May demand human support or express distrust in automated responses."}
+{"id": "angry_after_waiting", "description": "User has already tried to resolve issue multiple times, waited on hold, or had previous unsuccessful contact. Frustrated tone, uses exclamation marks, demands immediate resolution, may threaten to close account or switch providers."}
+{"id": "typing_from_phone_with_typos", "description": "User is typing on phone while multitasking — walking, holding coffee, watching kids. Autocorrect failures, dropped words, run-on sentences, missing punctuation. Still readable but clearly casual and rushed."}
+{"id": "non_native_broken_english", "description": "User is non-native speaker with limited English proficiency. Simple vocabulary, grammar mistakes, missing articles, mixed tenses. May use translation app incorrectly. Gets confused by complex responses."}
