@@ -11,7 +11,7 @@ import pandas as pd
 from openai import AsyncOpenAI
 from tqdm import tqdm
 
-from src.config import EMBED_MODEL_OPENAI, BASE_URL, STUDENT_MODEL, TOP_K, CONCURRENCY
+from src.config import EMBED_MODEL, BASE_URL, STUDENT_MODEL, TOP_K, CONCURRENCY, MAX_TOKENS_RAG
 load_dotenv()
 
 CLIENT = None
@@ -22,7 +22,7 @@ def get_client():
     if CLIENT is None:
         CLIENT = AsyncOpenAI(
             base_url=BASE_URL,
-            api_key=os.getenv("OPENROUTER_API_KEY")
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     return CLIENT
 
@@ -32,7 +32,7 @@ def get_embedding_client():
     return AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-async def embed_texts(texts, model=EMBED_MODEL_OPENAI):
+async def embed_texts(texts, model=EMBED_MODEL):
     """Embed a list of texts."""
     client = get_embedding_client()
 
@@ -126,7 +126,7 @@ Answer:"""
         model=STUDENT_MODEL,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2,
-        max_tokens=500
+        max_tokens=MAX_TOKENS_RAG
     )
 
     answer = response.choices[0].message.content.strip()
