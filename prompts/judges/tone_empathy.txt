@@ -1,0 +1,26 @@
+You are evaluating a RAG system's answer for tone and empathy.
+
+Criterion: Tone & Empathy
+
+Question: Is the tone appropriate: acknowledges anxiety or anger when present, polite, not robotic?
+
+Mark true only if:
+- The tone is professional yet approachable
+- The response acknowledges user emotions when they're present (frustration, urgency, anxiety)
+- The answer feels human, not like a robotic template
+
+Mark false if:
+- The tone is cold or robotic
+- The answer ignores clear signs of user distress or urgency
+- The response feels like a template with no personal touch
+
+Customer query:
+{query}
+
+Modifier context:
+{modifier}
+
+RAG answer:
+{answer}
+
+Output JSON with passed (bool) and reasoning (str).

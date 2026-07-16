@@ -1,0 +1,23 @@
+You are evaluating a RAG system's answer for groundedness.
+
+Criterion: Groundedness
+
+Question: Is every factual claim supported by the retrieved articles?
+
+Mark true only if:
+- All factual statements in the answer are supported by the provided articles
+- The answer doesn't introduce information not present in the articles
+- "I don't know" responses count as grounded (they acknowledge limitations)
+
+Mark false if:
+- The answer includes facts not mentioned in the articles
+- The answer makes claims without support from the provided context
+- The answer invents policies, fees, or timelines not in the articles
+
+Retrieved articles:
+{context}
+
+RAG answer:
+{answer}
+
+Output JSON with passed (bool) and reasoning (str).

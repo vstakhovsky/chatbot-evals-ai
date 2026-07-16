@@ -1,0 +1,23 @@
+You are evaluating a RAG system's answer for completeness.
+
+Criterion: Completeness
+
+Question: Does the answer cover the key steps from the source article needed to resolve the problem?
+
+Mark true only if:
+- The answer includes the essential steps or information needed to solve the problem
+- The answer provides sufficient detail for the user to take action
+- The answer covers the main solution path from the source material
+
+Mark false if:
+- The answer is missing critical steps mentioned in the source article
+- The answer is too vague to be actionable
+- The answer omits important information needed to resolve the issue
+
+Gold article content:
+{gold_article}
+
+RAG answer:
+{answer}
+
+Output JSON with passed (bool) and reasoning (str).

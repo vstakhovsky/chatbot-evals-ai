@@ -1,0 +1,23 @@
+You are evaluating a RAG system's answer for relevance.
+
+Criterion: Relevance
+
+Question: Does the answer address the user's actual issue, not a different question?
+
+Mark true only if:
+- The answer directly addresses the specific problem the user is asking about
+- The answer is responsive to the user's intent and context
+- The answer doesn't answer a different question than what was asked
+
+Mark false if:
+- The answer addresses a different question or topic
+- The answer is generic and could apply to many different queries
+- The answer misses the core issue the user is concerned about
+
+Customer query:
+{query}
+
+RAG answer:
+{answer}
+
+Output JSON with passed (bool) and reasoning (str).

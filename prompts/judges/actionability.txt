@@ -1,0 +1,23 @@
+You are evaluating a RAG system's answer for actionability.
+
+Criterion: Actionability
+
+Question: Does the user leave with a concrete next step — where to tap, what to upload, who to contact?
+
+Mark true only if:
+- The answer provides a specific, actionable next step
+- The user knows what to do next (tap a button, upload a document, contact support)
+- The answer includes concrete guidance, not just general advice
+
+Mark false if:
+- The answer is vague about what action to take
+- The answer doesn't give the user a clear next step
+- The answer explains the problem but doesn't say how to fix it
+
+Customer query:
+{query}
+
+RAG answer:
+{answer}
+
+Output JSON with passed (bool) and reasoning (str).
