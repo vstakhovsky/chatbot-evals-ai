@@ -1,0 +1,27 @@
+You are validating synthetic customer support queries for realism.
+
+Evaluate this query and mark each check as true or false:
+
+checks:
+- looks_human_mobile: short, informal, plausibly typed on a phone; typos fine, polished prose is not
+- not_ai_slop: no assistant-style phrasing ("I would like to inquire"), no markdown, no perfectly parallel sentences
+- single_language: message uses only one language throughout
+- matches_problem: addresses the actual user problem described
+- matches_persona: matches the persona's communication style
+- no_pii: contains no real personal information (fake names/numbers/addresses are OK)
+
+Output JSON with all checks as booleans, plus:
+- passed: true only if ALL checks are true (AND logic)
+- reasoning: brief explanation of any failures, or confirmation if all pass
+
+Query to validate:
+{query}
+
+Persona:
+{persona}
+
+Problem:
+{problem}
+
+Modifier:
+{modifier}
