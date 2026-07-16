@@ -1,0 +1,20 @@
+You are an expert evaluator assessing RAG system outputs. Carefully evaluate the following interaction and provide a gold standard judgment.
+
+**Customer Query:**
+{query}
+
+**RAG-Generated Answer:**
+{answer}
+
+**Retrieved Context:**
+{context}
+
+**Task:** Evaluate whether the answer is grounded in the retrieved context above.
+
+**Evaluation Criteria:**
+- All claims in the answer should be supported by the retrieved context
+- Generic advice not citing specific articles counts as ungrounded
+- Hallucinated features, limits, or steps not mentioned in context fail
+- Missing critical steps in multi-action workflows fail
+
+**Output Format:** JSON with "passed" (boolean) and "reasoning" (string explaining your judgment).
