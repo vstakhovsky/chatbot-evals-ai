@@ -4,14 +4,16 @@ import asyncio
 import csv
 import json
 import os
+import time
 from pathlib import Path
 from dotenv import load_dotenv
+from datetime import datetime, timedelta
 
 from openai import AsyncOpenAI
 from tqdm import tqdm
 import pandas as pd
 
-from src.config import VIBE_MODEL, BASE_URL, CONCURRENCY
+from src.config import VIBE_MODEL, BASE_URL, CONCURRENCY, MAX_TOKENS_VIBE_CHECK
 from src.schemas import VibeCheckValidation
 
 load_dotenv()
@@ -24,13 +26,13 @@ def get_client():
     if CLIENT is None:
         CLIENT = AsyncOpenAI(
             base_url=BASE_URL,
-            api_key=os.getenv("OPENROUTER_API_KEY")
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     return CLIENT
 
 
 async def validate_query(row, persona_desc, problem_desc, modifier_desc):
-    """Validate a single query."""
+    """Validate a single query - ONE structured call with all checks."""
     prompt = Path("prompts/vibe_check.txt").read_text().format(
         query=row["query"],
         persona=persona_desc,
@@ -42,11 +44,12 @@ async def validate_query(row, persona_desc, problem_desc, modifier_desc):
     response = await client.chat.completions.create(
         model=VIBE_MODEL,
         messages=[
-            {"role": "system", "content": "You validate synthetic queries for realism. Output JSON with all checks as booleans, passed (bool), and reasoning (str)."},
+            {"role": "system", "content": "You validate synthetic queries for realism. Output JSON with six boolean checks (looks_human_mobile, not_ai_slop, single_language, matches_problem, matches_persona, no_pii), passed (bool, AND of all), and reasoning (str)."},
             {"role": "user", "content": prompt}
         ],
         response_format={"type": "json_object"},
-        temperature=0
+        temperature=0,
+        max_tokens=MAX_TOKENS_VIBE_CHECK
     )
 
     result = json.loads(response.choices[0].message.content)
@@ -54,7 +57,7 @@ async def validate_query(row, persona_desc, problem_desc, modifier_desc):
 
 
 async def validate_queries_with_resume(input_file, output_file, personas, problems, modifiers):
-    """Validate queries with checkpoint/resume capability."""
+    """Validate queries with checkpoint/resume capability and throughput reporting."""
 
     # Load queries
     df = pd.read_csv(input_file)
@@ -64,20 +67,16 @@ async def validate_queries_with_resume(input_file, output_file, personas, proble
     if output_file.exists():
         existing_df = pd.read_csv(output_file)
         for _, row in existing_df.iterrows():
-            key = (row["persona_id"], row["problem_id"], row["modifier_id"])
-            existing[key] = row
+            # Use index as key
+            existing[row.name] = row
 
     # Find what's missing
-    missing = []
-    for _, row in df.iterrows():
-        key = (row["persona_id"], row["problem_id"], row["modifier_id"])
-        if key not in existing:
-            missing.append(row)
+    missing_indices = [i for i in df.index if i not in existing]
 
     if existing:
-        print(f"resume: {len(existing)} done, {len(missing)} missing")
+        print(f"resume: {len(existing)} done, {len(missing_indices)} missing")
 
-    if not missing:
+    if not missing_indices:
         print("All queries already validated")
         return pd.read_csv(output_file)
 
@@ -88,29 +87,65 @@ async def validate_queries_with_resume(input_file, output_file, personas, proble
 
     semaphore = asyncio.Semaphore(CONCURRENCY)
 
-    async def validate_with_semaphore(row):
+    async def validate_with_semaphore(idx):
         async with semaphore:
+            row = df.loc[idx]
             p_desc = persona_lookup[row["persona_id"]]
             pr_desc = problem_lookup[row["problem_id"]]
             m_desc = modifier_lookup[row["modifier_id"]]
-            return await validate_query(row, p_desc, pr_desc, m_desc)
+            return idx, await validate_query(row, p_desc, pr_desc, m_desc)
 
-    # Validate missing ones
-    results = []
-    for row in tqdm(missing, desc="Validating queries"):
-        result = await validate_with_semaphore(row)
-        results.append(result)
+    # Throughput tracking
+    start_time = time.time()
+    batch_size = 100
+    last_batch_time = start_time
 
-        # Checkpoint incrementally
-        output_file.parent.mkdir(parents=True, exist_ok=True)
-        results_df = pd.DataFrame(results)
-        results_df.to_csv(output_file, index=False)
+    print(f"\nValidating {len(missing_indices)} queries with CONCURRENCY={CONCURRENCY}...")
+    print(f"Estimated time: {len(missing_indices) / CONCURRENCY * 2.5 / 60:.1f} minutes")
 
-    # Combine and return
-    all_results = pd.DataFrame(list(existing.values()) + results)
-    all_results.to_csv(output_file, index=False)
+    # Validate missing rows in batches with progress tracking
+    results = {}
+    batch_count = 0
 
-    return all_results
+    for i in range(0, len(missing_indices), batch_size):
+        batch_indices = missing_indices[i:i + batch_size]
+
+        # Process batch in parallel
+        batch_tasks = [validate_with_semaphore(idx) for idx in batch_indices]
+        batch_results = await asyncio.gather(*batch_tasks)
+
+        # Store results
+        for idx, result in batch_results:
+            results[idx] = result
+
+        batch_count += 1
+        elapsed = time.time() - start_time
+        total_done = len(existing) + len(results)
+        throughput = total_done / elapsed if elapsed > 0 else 0
+
+        # Print progress every batch
+        current_time = datetime.now()
+        elapsed_min = elapsed / 60
+        eta = (len(missing_indices) - total_done + len(existing)) / throughput if throughput > 0 else 0
+        eta_min = eta / 60
+
+        print(f"[{current_time.strftime('%H:%M:%S')}] {total_done}/{len(df)} validated | "
+              f"throughput: {throughput:.1f} rows/min | "
+              f"ETA: {eta_min:.1f} min | "
+              f"elapsed: {elapsed_min:.1f} min")
+
+    # Combine and save
+    all_results = []
+    for idx in df.index:
+        if idx in existing:
+            all_results.append(existing[idx].to_dict())
+        else:
+            all_results.append(results[idx])
+
+    results_df = pd.DataFrame(all_results)
+    results_df.to_csv(output_file, index=False)
+
+    return results_df
 
 
 async def main():
@@ -129,11 +164,12 @@ async def main():
 
     results_df = await validate_queries_with_resume(input_file, output_file, personas, problems, modifiers)
 
-    print(f"\nValidated {len(results_df)} queries")
+    print(f"\n{'='*60}")
+    print(f"Validation complete: {len(results_df)} queries")
     print(f"Output: {output_file}")
     print(f"\nAcceptance rate: {results_df['passed'].mean():.2%}")
-    print(f"\nSample validated queries:")
-    print(results_df.head(3))
+    print(f"Passed: {results_df['passed'].sum()}/{len(results_df)}")
+    print(f"{'='*60}")
 
     return results_df
 

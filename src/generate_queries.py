@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from tqdm import tqdm
 
-from src.config import GEN_MODEL, BASE_URL, MAX_ROWS, CONCURRENCY, SEED
+from src.config import GEN_MODEL, BASE_URL, MAX_ROWS, CONCURRENCY, SEED, MAX_TOKENS_GENERATION
 from src.schemas import SyntheticQuery
 
 load_dotenv()
@@ -24,7 +24,7 @@ def get_client():
     if CLIENT is None:
         CLIENT = AsyncOpenAI(
             base_url=BASE_URL,
-            api_key=os.getenv("OPENROUTER_API_KEY")
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     return CLIENT
 
@@ -60,7 +60,7 @@ async def generate_query(persona, problem, modifier):
         model=GEN_MODEL,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.7,
-        max_tokens=200
+        max_tokens=MAX_TOKENS_GENERATION
     )
 
     query = response.choices[0].message.content.strip()

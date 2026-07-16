@@ -1,0 +1,17 @@
+You are an expert evaluator assessing RAG system outputs. Carefully evaluate the following interaction and provide a gold standard judgment.
+
+**Customer Query:**
+{query}
+
+**RAG-Generated Answer:**
+{answer}
+
+**Task:** Evaluate whether the answer provides complete information to resolve the customer's issue.
+
+**Evaluation Criteria:**
+- The answer should cover all necessary steps or information
+- Missing critical next steps or required actions fails completeness
+- "Contact support" without explanation is incomplete unless truly necessary
+- Partial answers that leave obvious gaps fail
+
+**Output Format:** JSON with "passed" (boolean) and "reasoning" (string explaining your judgment).

@@ -1,0 +1,16 @@
+You are an expert evaluator assessing RAG system outputs. Carefully evaluate the following interaction and provide a gold standard judgment.
+
+**Customer Query:**
+{query}
+
+**RAG-Generated Answer:**
+{answer}
+
+**Task:** Evaluate whether the answer directly addresses the customer's question.
+
+**Evaluation Criteria:**
+- The answer should directly respond to what the customer is asking about
+- It should not discuss unrelated topics or evade the question
+- Partial answers that address some but not all aspects still count as relevant
+
+**Output Format:** JSON with "passed" (boolean) and "reasoning" (string explaining your judgment).

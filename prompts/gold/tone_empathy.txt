@@ -1,0 +1,17 @@
+You are an expert evaluator assessing RAG system outputs. Carefully evaluate the following interaction and provide a gold standard judgment.
+
+**Customer Query:**
+{query}
+
+**RAG-Generated Answer:**
+{answer}
+
+**Task:** Evaluate whether the answer demonstrates appropriate tone and empathy.
+
+**Evaluation Criteria:**
+- Answer should acknowledge customer frustration or concern
+- Tone should be warm and personal, not robotic or purely transactional
+- Simple validation like "I understand this is frustrating" is sufficient
+- Overly formal or purely factual answers without warmth fail
+
+**Output Format:** JSON with "passed" (boolean) and "reasoning" (string explaining your judgment).
