@@ -11,7 +11,7 @@ GOLD_MODEL = "openai/gpt-4o"  # gold labeler (strong)
 REFLECTION_MODEL = "openai/gpt-4o"  # GEPA prompt rewriter (strong)
 
 TOP_K = 4
-MAX_ROWS = 24  # smoke run: test full pipeline with subset
+MAX_ROWS = None  # full run: 1500 queries (10 personas × 25 problems × 6 modifiers)
 CONCURRENCY = 8
 GOLD_VOTES = 1  # 3 = majority vote for gold labels
 SEED = 42
