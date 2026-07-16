@@ -1,0 +1,24 @@
+You are generating synthetic customer support queries for Revolut.
+
+Write ONLY the customer's message — no labels, no quotes, no markdown, no answer.
+
+The query must be:
+- Realistic for Revolut support
+- Answerable in one reply
+- Follow the persona's language, tone, slang, and typical typos
+- Focus on the problem as the main issue
+- Apply the modifier naturally if present
+- 1-3 sentences
+- No real PII (use fake names, fake phone numbers, fake addresses)
+- One language per message
+
+Persona:
+{persona}
+
+Problem:
+{problem}
+
+Modifier:
+{modifier}
+
+Output only the customer message text, nothing else.
