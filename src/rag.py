@@ -16,25 +16,16 @@ load_dotenv()
 
 CLIENT = None
 
-
 def get_client():
     global CLIENT
     if CLIENT is None:
-        CLIENT = AsyncOpenAI(
-            base_url=BASE_URL,
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        CLIENT = AsyncOpenAI(base_url=BASE_URL, api_key=os.getenv("OPENAI_API_KEY"))
     return CLIENT
-
-
-def get_embedding_client():
-    """Get client for embeddings - use direct OpenAI."""
-    return AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 async def embed_texts(texts, model=EMBED_MODEL):
     """Embed a list of texts."""
-    client = get_embedding_client()
+    client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     results = []
     for i in range(0, len(texts), CONCURRENCY):
@@ -50,8 +41,12 @@ async def embed_texts(texts, model=EMBED_MODEL):
 
 async def build_corpus_embeddings():
     """Build and cache corpus embeddings."""
-    cache_file = Path("data/outputs/corpus_emb.npz")
-    articles_file = Path("data/revolut_help_articles.jsonl")
+    project_root = Path.cwd()
+    while not (project_root / "src").exists() and project_root.parent != project_root:
+        project_root = project_root.parent
+
+    cache_file = project_root / "data/outputs/corpus_emb.npz"
+    articles_file = project_root / "data/revolut_help_articles.jsonl"
 
     if cache_file.exists():
         print(f"Loading cached embeddings from {cache_file}")
@@ -61,11 +56,9 @@ async def build_corpus_embeddings():
     print("Building corpus embeddings...")
     articles = [json.loads(line) for line in articles_file.read_text().strip().split("\n")]
 
-    # Embed title + content
     texts = [f"{a['title']}\n{a['content_text']}" for a in articles]
     embeddings = await embed_texts(texts)
 
-    # Cache
     cache_file.parent.mkdir(parents=True, exist_ok=True)
     np.savez(cache_file, embeddings=embeddings, articles=articles)
 
@@ -97,15 +90,10 @@ def retrieve(query_embedding, corpus_embeddings, articles, top_k=TOP_K):
 
 async def answer_query(query, retrieved_articles, problem_id):
     """Generate answer using retrieved articles."""
-    # Build context
     context = "\n\n".join([
         f"Article: {r['title']}\n{r['content']}"
         for r in retrieved_articles
     ])
-
-    # Check if gold article was retrieved
-    # This is a simple check - in real system you'd track article IDs
-    gold_retrieved = False  # ponytail: would need source_article_ids from problem seed
 
     prompt = f"""You are a Revolut customer support agent. Answer the customer's question using ONLY the provided articles.
 
@@ -136,7 +124,7 @@ Answer:"""
         "retrieved_ids": json.dumps([r["index"] for r in retrieved_articles]),
         "retrieved_titles": json.dumps([r["title"] for r in retrieved_articles]),
         "retrieved_scores": json.dumps([r["score"] for r in retrieved_articles]),
-        "gold_article_retrieved": gold_retrieved
+        "gold_article_retrieved": False
     }
 
 
@@ -165,7 +153,11 @@ async def run_rag(df):
 
 async def main():
     """Run RAG pipeline on validated queries."""
-    input_file = Path("data/outputs/validated_queries.csv")
+    project_root = Path.cwd()
+    while not (project_root / "src").exists() and project_root.parent != project_root:
+        project_root = project_root.parent
+
+    input_file = project_root / "data/outputs/validated_queries.csv"
 
     if not input_file.exists():
         print(f"Error: {input_file} not found. Run vibe_check.py first.")
@@ -173,13 +165,12 @@ async def main():
 
     df = pd.read_csv(input_file)
 
-    # Filter to only passed queries
     df = df[df["passed"] == True]
 
     print(f"Running RAG on {len(df)} validated queries...")
     results_df = await run_rag(df)
 
-    output_file = Path("data/outputs/rag_outputs.csv")
+    output_file = project_root / "data/outputs/rag_outputs.csv"
     results_df.to_csv(output_file, index=False)
 
     print(f"\nOutput: {output_file}")
@@ -190,5 +181,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(main())

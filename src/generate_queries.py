@@ -18,14 +18,10 @@ load_dotenv()
 
 CLIENT = None
 
-
 def get_client():
     global CLIENT
     if CLIENT is None:
-        CLIENT = AsyncOpenAI(
-            base_url=BASE_URL,
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        CLIENT = AsyncOpenAI(base_url=BASE_URL, api_key=os.getenv("OPENAI_API_KEY"))
     return CLIENT
 
 
@@ -63,9 +59,7 @@ async def generate_query(persona, problem, modifier):
         max_tokens=MAX_TOKENS_GENERATION
     )
 
-    query = response.choices[0].message.content.strip()
-    # Clean up any quotes or markdown the model added
-    query = query.strip('"').strip("'").strip("`").strip()
+    query = response.choices[0].message.content().strip('"\'`')
 
     return {
         "persona_id": persona["id"],
@@ -130,11 +124,13 @@ async def main():
     personas, problems, modifiers = load_seeds()
     grid = generate_grid(personas, problems, modifiers)
 
-    output_file = Path("data/outputs/synthetic_queries.csv")
+    project_root = Path.cwd()
+    while not (project_root / "src").exists() and project_root.parent != project_root:
+        project_root = project_root.parent
+
+    output_file = project_root / "data/outputs/synthetic_queries.csv"
     results = await generate_queries_with_resume(grid, output_file)
 
-    # Also save full results
-    import pandas as pd
     df = pd.DataFrame(results)
     df.to_csv(output_file, index=False)
 

@@ -20,14 +20,10 @@ load_dotenv()
 
 CLIENT = None
 
-
 def get_client():
     global CLIENT
     if CLIENT is None:
-        CLIENT = AsyncOpenAI(
-            base_url=BASE_URL,
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        CLIENT = AsyncOpenAI(base_url=BASE_URL, api_key=os.getenv("OPENAI_API_KEY"))
     return CLIENT
 
 
@@ -98,7 +94,6 @@ async def validate_queries_with_resume(input_file, output_file, personas, proble
     # Throughput tracking
     start_time = time.time()
     batch_size = 100
-    last_batch_time = start_time
 
     print(f"\nValidating {len(missing_indices)} queries with CONCURRENCY={CONCURRENCY}...")
     print(f"Estimated time: {len(missing_indices) / CONCURRENCY * 2.5 / 60:.1f} minutes")
@@ -150,13 +145,17 @@ async def validate_queries_with_resume(input_file, output_file, personas, proble
 
 async def main():
     """Validate all generated queries."""
-    # Load seeds
     personas = [json.loads(line) for line in Path("seeds/personas.jsonl").read_text().strip().split("\n")]
-    problems = [json.loads(line) for line in Path("seeds/problems.jsonl").read_text().strip().split("\n")]
-    modifiers = [json.loads(line) for line in Path("seeds/modifiers.jsonl").read_text().strip().split("\n")]
 
-    input_file = Path("data/outputs/synthetic_queries.csv")
-    output_file = Path("data/outputs/validated_queries.csv")
+    project_root = Path.cwd()
+    while not (project_root / "src").exists() and project_root.parent != project_root:
+        project_root = project_root.parent
+
+    problems = [json.loads(line) for line in (project_root / "seeds/problems.jsonl").read_text().strip().split("\n")]
+    modifiers = [json.loads(line) for line in (project_root / "seeds/modifiers.jsonl").read_text().strip().split("\n")]
+
+    input_file = project_root / "data/outputs/synthetic_queries.csv"
+    output_file = project_root / "data/outputs/validated_queries.csv"
 
     if not input_file.exists():
         print(f"Error: {input_file} not found. Run generate_queries.py first.")
