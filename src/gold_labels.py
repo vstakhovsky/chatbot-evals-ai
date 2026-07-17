@@ -15,21 +15,15 @@ import numpy as np
 from openai import AsyncOpenAI
 
 from src.config import GOLD_MODEL, BASE_URL, SEED
-from src.schemas import GoldLabel
 
 load_dotenv()
 
 CLIENT = None
 
-
 def get_client():
     global CLIENT
     if CLIENT is None:
-        CLIENT = AsyncOpenAI(
-            base_url=BASE_URL,
-            api_key=os.getenv("OPENAI_API_KEY"),
-            timeout=60.0
-        )
+        CLIENT = AsyncOpenAI(base_url=BASE_URL, api_key=os.getenv("OPENAI_API_KEY"), timeout=60.0)
     return CLIENT
 
 
@@ -127,7 +121,7 @@ async def generate_gold_labels_for_criterion(eval_df, criterion, prompt_file, ou
 
     # Save to CSV
     df = pd.DataFrame(results)
-    df["human_override"] = ""  # Empty column for human review
+    df["human_override"] = "none"
     df = df[[
         "persona_id", "problem_id", "modifier_id", "query", "answer",
         "criterion", "gold_passed", "gold_reasoning",

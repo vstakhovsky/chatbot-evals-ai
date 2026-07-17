@@ -34,7 +34,10 @@ def test_gold_csv_schema():
         assert df['judge_passed'].dtype == 'bool', f"judge_passed should be boolean in {gold_file.name}"
 
         # human_override should be string/object (possibly empty)
-        assert df['human_override'].dtype == 'object', f"human_override should be string in {gold_file.name}"
+        assert pd.api.types.is_string_dtype(df['human_override']), (
+            f"human_override should be a string column in {gold_file.name}; "
+            f"actual dtype: {df['human_override'].dtype}"
+        )
 
         # Should have data
         assert len(df) > 0, f"{gold_file.name} should have data"

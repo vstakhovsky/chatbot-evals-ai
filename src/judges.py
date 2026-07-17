@@ -18,21 +18,12 @@ from src.schemas import JudgeResult
 load_dotenv()
 
 CLIENT = None
-# ponytail: conservative concurrency to avoid connection failures
 JUDGE_CONCURRENCY = 4
-MAX_RETRIES = 3
-RETRY_DELAY = 2
-
 
 def get_client():
     global CLIENT
     if CLIENT is None:
-        CLIENT = AsyncOpenAI(
-            base_url=BASE_URL,
-            api_key=os.getenv("OPENAI_API_KEY"),
-            timeout=60.0,
-            max_retries=0  # we handle retries manually
-        )
+        CLIENT = AsyncOpenAI(base_url=BASE_URL, api_key=os.getenv("OPENAI_API_KEY"), timeout=60.0, max_retries=0)
     return CLIENT
 
 
@@ -72,18 +63,11 @@ async def judge_criterion(row, criterion, judge_config):
     inputs = {}
     for input_key in judge_config["inputs"]:
         if input_key == "context":
-            # Build context from retrieved articles
             titles = json.loads(row.get("retrieved_titles", "[]"))
-            contents = []
-            for i, title in enumerate(titles):
-                contents.append(f"Article: {title}")
-            inputs["context"] = "\n".join(contents)
+            inputs["context"] = "\n".join(f"Article: {title}" for title in titles)
         elif input_key == "gold_article":
-            # In real system, you'd fetch the actual gold article
-            # For now, use the retrieved articles as proxy
             inputs["gold_article"] = "See retrieved articles above"
         elif input_key == "modifier":
-            # Get modifier description from seeds
             modifiers = [json.loads(line) for line in Path("seeds/modifiers.jsonl").read_text().strip().split("\n")]
             modifier_lookup = {m["id"]: m["description"] for m in modifiers}
             inputs["modifier"] = modifier_lookup.get(row.get("modifier_id", ""), "")
@@ -96,7 +80,7 @@ async def judge_criterion(row, criterion, judge_config):
     client = get_client()
 
     # Retry with exponential backoff
-    for attempt in range(MAX_RETRIES):
+    for attempt in range(3):
         try:
             response = await client.chat.completions.create(
                 model=JUDGE_MODEL,
@@ -111,10 +95,10 @@ async def judge_criterion(row, criterion, judge_config):
             result = json.loads(response.choices[0].message.content)
             return criterion, result
         except Exception as e:
-            if attempt == MAX_RETRIES - 1:
+            if attempt == 2:
                 raise
-            wait_time = RETRY_DELAY * (2 ** attempt)
-            print(f"  Retry {attempt + 1}/{MAX_RETRIES} for {criterion} after {wait_time}s (error: {e})")
+            wait_time = 2 * (2 ** attempt)
+            print(f"  Retry {attempt + 1}/3 for {criterion} after {wait_time}s (error: {e})")
             await asyncio.sleep(wait_time)
 
 
@@ -217,8 +201,12 @@ async def judge_with_resume(input_file, output_file):
 
 async def main():
     """Judge all RAG outputs."""
-    input_file = Path("data/outputs/rag_outputs.csv")
-    output_file = Path("data/outputs/eval_results.csv")
+    project_root = Path.cwd()
+    while not (project_root / "src").exists() and project_root.parent != project_root:
+        project_root = project_root.parent
+
+    input_file = project_root / "data/outputs/rag_outputs.csv"
+    output_file = project_root / "data/outputs/eval_results.csv"
 
     if not input_file.exists():
         print(f"Error: {input_file} not found. Run rag.py first.")
