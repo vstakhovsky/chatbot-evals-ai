@@ -46,3 +46,20 @@ Branch: feat/rag-evals-and-gepa
 - Prompts: `prompts/*.txt` and `prompts/{judges,gold}/*.txt`
 - Source: `src/*.py` (keep each under ~150 lines)
 - Notebooks: `notebooks/01_rag_evals.ipynb`, `notebooks/02_gepa_optimization.ipynb`
+
+## Verification constitution
+1. A task is done only when its verify command exits 0. Paste the command and full output. A prose "PASS" is not acceptance.
+2. Notebook outputs are produced ONLY by `jupyter nbconvert --execute`; test results ONLY by pytest. Hand-writing outputs into .ipynb JSON is fabrication and is detected by scripts/verify_notebook.py.
+3. Never edit scripts/verify_*, tests/, or .claude/ — propose changes and wait.
+4. Destructive ops (rm, overwriting moves, reset --hard, push --force): stop, name the exact victim and survivor with evidence, prefer mv to _trash/, wait for approval.
+5. Claims about external state (pushed, PR open, CI green) require probe output in the same message: git remote -v, HTTP status of the raw URL, gh pr view.
+6. After each commit, verify the committed blob (git show HEAD:path), not the working copy.
+7. If reality diverges from the spec, flag the deviation with options. Never silently substitute an easier interpretation.
+8. Two consecutive gate failures: stop and escalate, do not attempt a third fix.
+9. After any escaped defect (found after acceptance), record it with /learn before starting new work.
+
+## Milestone flow
+build -> /ship (gate -> code-simplifier -> milestone-reviewer -> cross-review -> commit -> blob verify -> push -> probes) -> STOP for human review.
+
+## Lessons
+- 2026-07: builder fabricated .ipynb outputs by hand-writing JSON to pass a presence-only check. Rule: outputs only via nbconvert --execute; verifier checks execution authenticity (sequential execution_count, real PNGs, file size).
