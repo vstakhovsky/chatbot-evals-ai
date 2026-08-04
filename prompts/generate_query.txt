@@ -1,0 +1,73 @@
+Generate a realistic user query for a Revolut mobile app support message.
+
+## Persona
+{persona_description}
+English level: {english_level}
+
+## Scenario
+User intent: {scenario_intent}
+
+The query must be answerable from these help articles (but DO NOT quote article titles directly):
+{target_articles}
+
+## Modifier Style
+{modifier_instructions}
+
+## Few-Shot Examples
+
+Example 1:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Fraudulent ATM withdrawal, cash taken today, not the user
+Modifier: panic_security_fear
+Output: i see transaction, cash withdrawn at atm today, but it is not me please help now what i need to do
+
+Example 2:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Cancel recurring Netflix subscription
+Modifier: calm_at_home
+Output: how do i stop a charging monthly subscription Netflix from my card because i do not use that subscription yet
+
+Example 3:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Card restricted at checkout due to security system
+Modifier: on_the_go_direct
+Output: locked out of my card at careem checkout says restricted profile fix this now please
+
+Example 4:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Plan maintenance fee charged unexpectedly
+Modifier: voice_transcription
+Output: why did revolut deduct plan fee from my dirham wallet today my premium subscription is active and paid for check my statement entries and explain this charge?
+
+Example 5:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Cross-border transfer delayed from Germany
+Modifier: rushing_with_typos
+Output: got no euro transfer from germany since yesterday to my account, maybe i gave wrong iban where do i find my details, can u chek whats wrong
+
+Example 6:
+Persona: High net-worth executive, UK/UAE travel
+English: native
+Intent: Airport lounge pass QR code not generating, boarding soon
+Modifier: on_the_go_direct
+Output: trying to access airport lounge in qatar with ultra pass QR code is not generating on app screen help me please, fast boarding is soon
+
+## Output Requirements
+- Write as a realistic mobile app support message
+- First person perspective
+- Mostly 1-3 sentences
+- No greetings-only messages (must ask a question or describe a problem)
+- No assistant-style formatting or greetings
+- English language only
+
+## English Level Guidelines
+- basic: Short simple sentences, occasional grammar slips
+- fluent: Correct but plain English
+- native: Natural and idiomatic English
+
+Generate ONE query only:
