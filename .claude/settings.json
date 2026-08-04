@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Edit|Write|MultiEdit",
+        "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/scripts/hooks.py protect-files" }] },
+      { "matcher": "Bash",
+        "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/scripts/hooks.py guard-bash" }] }
+    ],
+    "SessionStart": [
+      { "matcher": "",
+        "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/scripts/hooks.py session-context" }] }
+    ],
+    "Stop": [
+      { "matcher": "",
+        "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/scripts/hooks.py verdict" }] }
+    ]
+  }
+}
