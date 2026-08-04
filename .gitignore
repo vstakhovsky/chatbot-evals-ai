@@ -18,3 +18,9 @@ data/outputs/*.npz
 *~
 .vscode/
 .idea/
+
+# Stage 6 RAG evaluation artifacts
+data/rag_eval.log
+data/article_embeddings.npy
+data/.rag_eval.lock
+data/rag_outputs_backup_*.csv
