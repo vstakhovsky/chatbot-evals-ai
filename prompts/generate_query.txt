@@ -37,33 +37,34 @@ Modifier: on_the_go_direct
 Output: locked out of my card at careem checkout says restricted profile fix this now please
 
 Example 4:
-Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
-English: fluent
-Intent: Plan maintenance fee charged unexpectedly
-Modifier: voice_transcription
-Output: why did revolut deduct plan fee from my dirham wallet today my premium subscription is active and paid for check my statement entries and explain this charge?
-
-Example 5:
-Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
-English: fluent
-Intent: Cross-border transfer delayed from Germany
-Modifier: rushing_with_typos
-Output: got no euro transfer from germany since yesterday to my account, maybe i gave wrong iban where do i find my details, can u chek whats wrong
-
-Example 6:
 Persona: High net-worth executive, UK/UAE travel
 English: native
 Intent: Airport lounge pass QR code not generating, boarding soon
 Modifier: on_the_go_direct
 Output: trying to access airport lounge in qatar with ultra pass QR code is not generating on app screen help me please, fast boarding is soon
 
+Example 5:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Plan maintenance fee charged unexpectedly
+Modifier: rushing_with_typos
+Output: got charged plan fee today but my subscrition is active why this fee appear
+
+Example 6:
+Persona: EU freelancer in Dubai, receives EUR/GBP, spends in AED
+English: fluent
+Intent: Cross-border transfer delayed from Germany
+Modifier: voice_transcription
+Output: um so i was expecting a transfer from germany yesterday but nothing showed up yet and i checked my iban and i'm wondering if maybe the details are wrong or something because the sender sent it but i don't see it in my account
+
 ## Output Requirements
 - Write as a realistic mobile app support message
 - First person perspective
-- Mostly 1-3 sentences
-- No greetings-only messages (must ask a question or describe a problem)
+- ONE question or ONE problem only - no second asks ("also", "additionally", "plus", "another thing")
+- No greetings-only messages - must ask a question or describe a problem
 - No assistant-style formatting or greetings
 - English language only
+- DO NOT include article titles verbatim or near-verbatim (substantially rewrite if referencing)
 
 ## English Level Guidelines
 - basic: Short simple sentences, occasional grammar slips

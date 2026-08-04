@@ -1,0 +1,14 @@
+[project]
+name = "chatbot-evals-ai"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "openai",
+    "numpy",
+    "pandas",
+    "pydantic>=2",
+    "tqdm",
+    "python-dotenv",
+    "jupyter",
+    "nbconvert",
+]

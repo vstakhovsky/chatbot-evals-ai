@@ -1,1352 +1,1505 @@
 [
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_fraud_1",
-    "intent_summary": "Fraud related query",
+    "scenario": "fraud_unauthorised_atm_withdrawal",
+    "intent_summary": "User reports fraudulent ATM withdrawal and needs to report it urgently",
+    "target_articles": [
+      "Report a fraudulent ATM withdrawal",
+      "Why was my ATM withdrawal declined?"
+    ],
+    "topic_group": "fraud_security"
+  },
+  {
+    "persona": "eu_freelancer_traveling_uae_male_29",
+    "scenario": "fraud_unrecognised_card_payment",
+    "intent_summary": "User doesn't recognize a card payment and suspects fraud",
     "target_articles": [
       "Report a card payment as a scam or fraud",
-      "Report a fraudulent ATM withdrawal"
-    ]
+      "Cards and contactless payments with Revolut Terminals"
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_card_2",
-    "intent_summary": "Card related query",
+    "scenario": "cross_border_transfer_delay",
+    "intent_summary": "Transfer from abroad hasn't arrived, user concerned about IBAN",
     "target_articles": [
-      "Receiving money to my Revolut card",
-      "How to add money with a card"
-    ]
+      "What account details should I use for incoming transfers?",
+      "My transfer to or from someone on Revolut wasn't received"
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_transfer_3",
-    "intent_summary": "Transfer related query",
-    "target_articles": [
-      "More help with a scheduled transfer",
-      "Schedule a transfer"
-    ]
-  },
-  {
-    "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_plan_4",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Who provides Ultra trip and event cancellation protection?",
       "Claiming after Premium travel insurance removal"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_fx_5",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_business_6",
-    "intent_summary": "Business related query",
-    "target_articles": [
-      "How do I log in to my Revolut Terminal?",
-      "eSIM on Revolut Terminals"
-    ]
-  },
-  {
-    "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_crypto_7",
+    "scenario": "crypto_1",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "How does crypto staking work?",
       "Is there a fee associated with crypto staking?"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_savings_8",
-    "intent_summary": "Savings related query",
+    "scenario": "card_profile_restricted_security_system",
+    "intent_summary": "Card payment declined due to security system restriction",
     "target_articles": [
-      "Withdraw from your Savings account",
-      "Documents and statements for my Savings accounts"
-    ]
+      "My card payment was declined by the security system",
+      "My account was restricted or closed"
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_fraud_9",
-    "intent_summary": "Fraud related query",
+    "scenario": "maintenance_fee_plan_billing",
+    "intent_summary": "User questions unexpected plan fee or maintenance charge",
     "target_articles": [
-      "Authorised Push Payment fraud reimbursement exclusions",
-      "Authorised Push Payment fraud reimbursement requirements"
-    ]
+      "Premium plan",
+      "Pay for your missed plan payment",
+      "Order a paid plan card"
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "eu_freelancer_traveling_uae_male_29",
-    "scenario": "eu_freelancer_traveling_uae_male_29_login_10",
+    "scenario": "crypto_2",
     "intent_summary": "Login related query",
     "target_articles": [
       "Addresses supported for withdrawing and reverting crypto deposits",
       "Supported crypto deposit currencies, networks, and exchanges"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_travel_1",
+    "scenario": "plans_billing_1",
     "intent_summary": "Travel related query",
     "target_articles": [
       "Claiming after Premium travel insurance removal",
       "Does moving home impact my travel insurance?"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_travel_2",
+    "scenario": "travel_benefits_1",
     "intent_summary": "Travel related query",
     "target_articles": [
       "Travel insurance coverage",
       "Travel insurance for areas affected by conflict"
-    ]
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_plan_3",
-    "intent_summary": "Plan related query",
+    "scenario": "travel_insurance_claim_question",
+    "intent_summary": "User asks about trip cancellation coverage and claim process",
     "target_articles": [
-      "Does moving home affect Ultra trip and event coverage?",
-      "Documents needed for an Ultra trip and event cancellation protection claim"
-    ]
+      "Will I get a full refund for my trip or event cancellation?",
+      "How do I make a cancel for any reason protection claim?"
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_card_4",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Restricted card deposits",
       "Ukraine card top-up limits"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_savings_5",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Instant Access Savings promotion",
       "Tax on Savings"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_fx_6",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_fraud_7",
+    "scenario": "fraud_security_1",
     "intent_summary": "Fraud related query",
     "target_articles": [
       "Report a fraudulent ATM withdrawal",
       "My card has been used fraudulently"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_business_8",
-    "intent_summary": "Business related query",
+    "scenario": "esim_data_activation_failed",
+    "intent_summary": "eSIM data package activated but can't connect to local network",
     "target_articles": [
-      "Edit the time on my Revolut Terminal",
-      "Warranty on Revolut Terminals"
-    ]
+      "Difficulties with eSIM",
+      "Installing and activating my eSIM",
+      "Revolut data plans"
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_family_9",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "Revolut Kids & Teens Save",
       "Revolut – Kids & Teens payments"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "ultra_globetrotter_executive_female_42",
-    "scenario": "ultra_globetrotter_executive_female_42_travel_10",
-    "intent_summary": "Travel related query",
+    "scenario": "airport_lounge_pass_issue",
+    "intent_summary": "Airport lounge QR code not generating, boarding soon",
     "target_articles": [
-      "How do I purchase an airport lounge pass?",
+      "I'm having difficulty with my airport lounge pass",
       "How do I use my airport lounge pass?"
-    ]
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_card_1",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Card deposit limits and fees",
       "Disruptions to adding money with Visa cards"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_login_2",
+    "scenario": "other_1",
     "intent_summary": "Login related query",
     "target_articles": [
       "Which merchants are not supported by Revolut?",
       "How does the Clear Sky debit card support Ukraine?"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_savings_3",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How to calculate interest on Savings accounts",
       "How is interest calculated on tiered Instant Access Savings?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_transfer_4",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Joint account transfers",
       "Change my Revtag"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_family_6",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "What happens if my joint account balance goes negative?",
       "Revolut closed my joint account"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_direct_debit_7",
+    "scenario": "other_2",
     "intent_summary": "Direct Debit related query",
     "target_articles": [
       "How to set up Direct Debits in Pro",
       "Problem with a Direct Debit"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_fraud_8",
+    "scenario": "fraud_security_1",
     "intent_summary": "Fraud related query",
     "target_articles": [
       "Report a fraudulent transfer",
       "APP fraud reimbursement eligibility"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_card_9",
+    "scenario": "cards_atm_2",
     "intent_summary": "Card related query",
     "target_articles": [
       "What is a virtual card?",
       "My virtual card is not working"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "senior_citizen_uk_female_67",
-    "scenario": "senior_citizen_uk_female_67_login_10",
+    "scenario": "crypto_1",
     "intent_summary": "Login related query",
     "target_articles": [
       "Addresses supported for withdrawing and reverting crypto deposits",
       "Supported crypto deposit currencies, networks, and exchanges"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_business_1",
+    "scenario": "other_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Will this affect my other Revolut products?",
       "Requesting money with a payment link"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_transfer_2",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Add money with an easy bank transfer",
       "Manage scheduled transfers"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_fx_6",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_business_7",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "I'm having trouble using my Revolut Terminal",
       "Sales using a Revolut Pro product catalogue"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_crypto_8",
+    "scenario": "crypto_1",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Stake and unstake crypto",
       "Calculation of crypto tiered pricing"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_business_9",
+    "scenario": "business_merchant_2",
     "intent_summary": "Business related query",
     "target_articles": [
       "What are Revolut Terminals?",
       "When will I receive my Revolut Terminal?"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "b2b_ecommerce_merchant_male_31",
-    "scenario": "b2b_ecommerce_merchant_male_31_transfer_10",
+    "scenario": "transfers_2",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Timeframes for transfers",
       "Bank transfer fees"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_crypto_1",
+    "scenario": "crypto_1",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Download a cryptocurrency statement",
       "Benefits and risks of trading crypto ETNs"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_card_2",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Receiving money to my Revolut card",
       "How to add money with a card"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_savings_3",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How to calculate interest on Savings accounts",
       "How is interest calculated on tiered Instant Access Savings?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_plan_4",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Who provides Ultra trip and event cancellation protection?",
       "Claiming after Premium travel insurance removal"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_business_5",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Failed payments on the Revolut Terminal",
       "How do I order a Revolut Terminal?"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_transfer_6",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Managing a failed number transfer",
       "Managing a number transfer to Revolut"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_family_7",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "Managing a Revolut – Kids & Teens account",
       "Revolut – Kids & Teens cards"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_fx_8",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_crypto_9",
+    "scenario": "crypto_2",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Trading with crypto tiered pricing",
       "How to make sure crypto withdrawals are processed smoothly"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "genz_crypto_trader_female_20",
-    "scenario": "genz_crypto_trader_female_20_savings_10",
+    "scenario": "savings_investments_2",
     "intent_summary": "Savings related query",
     "target_articles": [
       "What does it mean to be a high-net-worth investor?",
       "What does it mean to be a restricted investor?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_transfer_1",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Does the account transfer impact my plan insurance cover?",
       "Add money with a bank transfer"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_fx_2",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_family_6",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "What happens if my joint account balance goes negative?",
       "Revolut closed my joint account"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_direct_debit_7",
+    "scenario": "other_1",
     "intent_summary": "Direct Debit related query",
     "target_articles": [
       "How to set up Direct Debits in Pro",
       "Problem with a Direct Debit"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_business_8",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Edit the time on my Revolut Terminal",
       "Warranty on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_transfer_9",
+    "scenario": "transfers_2",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Why was my transfer sent via an intermediary bank?",
       "I received a transfer from an unknown sender"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "migrant_worker_remittance_male_38",
-    "scenario": "migrant_worker_remittance_male_38_fx_10",
+    "scenario": "fx_exchange_2",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_family_1",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "What will happen to my Joint account?",
       "Joint account card payments"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_card_2",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Receiving money to my Revolut card",
       "How to add money with a card"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_savings_3",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How to calculate interest on Savings accounts",
       "How is interest calculated on tiered Instant Access Savings?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_plan_4",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Who provides Ultra trip and event cancellation protection?",
       "Claiming after Premium travel insurance removal"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_transfer_5",
+    "scenario": "fraud_security_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Report a fraudulent transfer",
       "Cancelling or rescheduling a number transfer to Revolut"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_travel_6",
+    "scenario": "travel_benefits_1",
     "intent_summary": "Travel related query",
     "target_articles": [
       "How do I make a travel insurance claim?",
       "Who is covered by travel insurance?"
-    ]
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_business_7",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "I'm having trouble using my Revolut Terminal",
       "Sales using a Revolut Pro product catalogue"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_fraud_8",
+    "scenario": "fraud_security_2",
     "intent_summary": "Fraud related query",
     "target_articles": [
       "Report a fraudulent transfer",
       "APP fraud reimbursement eligibility"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_family_9",
+    "scenario": "family_joint_2",
     "intent_summary": "Family related query",
     "target_articles": [
       "Revolut Kids & Teens Save",
       "Revolut – Kids & Teens payments"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "young_parent_family_budget_female_34",
-    "scenario": "young_parent_family_budget_female_34_savings_10",
+    "scenario": "savings_investments_2",
     "intent_summary": "Savings related query",
     "target_articles": [
       "What does it mean to be a high-net-worth investor?",
       "What does it mean to be a restricted investor?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_savings_1",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How does sorting to investments work?",
       "Is the money in my Savings account protected by the FSCS?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_plan_2",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Ultra trip & event cancellation with companion coverage",
       "My supplier won’t let me cancel my trip/event. Am I covered with Ultra trip and event cancellation protection?"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_fx_4",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_transfer_5",
+    "scenario": "fraud_security_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Report a fraudulent transfer",
       "Cancelling or rescheduling a number transfer to Revolut"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_crypto_6",
+    "scenario": "crypto_1",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Crypto payments and how they work",
       "View your crypto card payments"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_business_7",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "I'm having trouble using my Revolut Terminal",
       "Sales using a Revolut Pro product catalogue"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_savings_8",
+    "scenario": "savings_investments_2",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Withdraw from your Savings account",
       "Documents and statements for my Savings accounts"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_plan_9",
+    "scenario": "plans_billing_2",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Am I covered for trips or events that I didn't purchase with my Revolut account with Ultra trip and event cancellation protection?",
       "Ultra trip & event cancellation with companion coverage"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "retail_investor_stocks_male_45",
-    "scenario": "retail_investor_stocks_male_45_savings_10",
+    "scenario": "savings_investments_3",
     "intent_summary": "Savings related query",
     "target_articles": [
       "What does it mean to be a high-net-worth investor?",
       "What does it mean to be a restricted investor?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_business_1",
+    "scenario": "other_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Will this affect my other Revolut products?",
       "Requesting money with a payment link"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_card_2",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Receiving money to my Revolut card",
       "How to add money with a card"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_transfer_3",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "More help with a scheduled transfer",
       "Schedule a transfer"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_business_6",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "How do I log in to my Revolut Terminal?",
       "eSIM on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_business_7",
+    "scenario": "business_merchant_2",
     "intent_summary": "Business related query",
     "target_articles": [
       "I'm having trouble using my Revolut Terminal",
       "Sales using a Revolut Pro product catalogue"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_fx_8",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_business_9",
+    "scenario": "business_merchant_3",
     "intent_summary": "Business related query",
     "target_articles": [
       "What are Revolut Terminals?",
       "When will I receive my Revolut Terminal?"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "cafe_owner_smb_female_52",
-    "scenario": "cafe_owner_smb_female_52_transfer_10",
+    "scenario": "transfers_2",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Timeframes for transfers",
       "Bank transfer fees"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_business_1",
+    "scenario": "other_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Will this affect my other Revolut products?",
       "Requesting money with a payment link"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_card_2",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Receiving money to my Revolut card",
       "How to add money with a card"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_transfer_3",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "More help with a scheduled transfer",
       "Schedule a transfer"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_family_6",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "What happens if my joint account balance goes negative?",
       "Revolut closed my joint account"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_login_7",
+    "scenario": "plans_billing_2",
     "intent_summary": "Login related query",
     "target_articles": [
       "Mobile plan voice support",
       "Why is the Revolut app no longer supported on my device?"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_fx_8",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_business_9",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "What are Revolut Terminals?",
       "When will I receive my Revolut Terminal?"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "gig_courier_instant_pay_male_27",
-    "scenario": "gig_courier_instant_pay_male_27_transfer_10",
+    "scenario": "transfers_2",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Timeframes for transfers",
       "Bank transfer fees"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_savings_1",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How does sorting to investments work?",
       "Is the money in my Savings account protected by the FSCS?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_fx_2",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_travel_3",
+    "scenario": "travel_benefits_1",
     "intent_summary": "Travel related query",
     "target_articles": [
       "Getting started with travel insurance",
       "What is the excess for travel insurance claims?"
-    ]
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_transfer_4",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Joint account transfers",
       "Change my Revtag"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_card_6",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "How to link a card to a Pocket and manage it",
       "How to withdraw cash from an ATM"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_login_7",
+    "scenario": "plans_billing_2",
     "intent_summary": "Login related query",
     "target_articles": [
       "Mobile plan voice support",
       "Why is the Revolut app no longer supported on my device?"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_business_8",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Edit the time on my Revolut Terminal",
       "Warranty on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_savings_9",
+    "scenario": "savings_investments_2",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Getting started with Joint Savings",
       "Kids & Teens Instant Access Savings"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "digital_nomad_tax_resident_female_33",
-    "scenario": "digital_nomad_tax_resident_female_33_fx_10",
+    "scenario": "fx_exchange_2",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_transfer_1",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Does the account transfer impact my plan insurance cover?",
       "Add money with a bank transfer"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_fx_2",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_direct_debit_3",
+    "scenario": "other_1",
     "intent_summary": "Direct Debit related query",
     "target_articles": [
       "Problem with a Direct Debit",
       "Manage Direct Debits"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_plan_4",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Who provides Ultra trip and event cancellation protection?",
       "Claiming after Premium travel insurance removal"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_card_5",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Cards and currencies supported for adding money",
       "Why your card top-ups may be blocked"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_savings_6",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "How are the funds in my Savings accounts protected?",
       "Why was my Savings Accounts restricted or closed?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_family_7",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "Managing a Revolut – Kids & Teens account",
       "Revolut – Kids & Teens cards"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_business_8",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Edit the time on my Revolut Terminal",
       "Warranty on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_login_9",
+    "scenario": "transfers_2",
     "intent_summary": "Login related query",
     "target_articles": [
       "Unsupported transfers sent from Revolut",
       "Supported currencies for outgoing transfers"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "cross_border_commuter_female_37",
-    "scenario": "cross_border_commuter_female_37_transfer_10",
+    "scenario": "transfers_3",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Timeframes for transfers",
       "Bank transfer fees"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_crypto_1",
+    "scenario": "crypto_1",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Download a cryptocurrency statement",
       "Benefits and risks of trading crypto ETNs"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_login_2",
+    "scenario": "other_1",
     "intent_summary": "Login related query",
     "target_articles": [
       "Which merchants are not supported by Revolut?",
       "How does the Clear Sky debit card support Ukraine?"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_fx_5",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_plan_6",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Metal plan",
       "Premium plan"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_transfer_7",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Service disruptions during transfer to Revolut",
       "Transfer your Revolut number to another provider"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_business_8",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Edit the time on my Revolut Terminal",
       "Warranty on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_crypto_9",
+    "scenario": "crypto_2",
     "intent_summary": "Crypto related query",
     "target_articles": [
       "Trading with crypto tiered pricing",
       "How to make sure crypto withdrawals are processed smoothly"
-    ]
+    ],
+    "topic_group": "crypto"
   },
   {
     "persona": "crypto_web3_enthusiast_male_24",
-    "scenario": "crypto_web3_enthusiast_male_24_savings_10",
+    "scenario": "savings_investments_2",
     "intent_summary": "Savings related query",
     "target_articles": [
       "What does it mean to be a high-net-worth investor?",
       "What does it mean to be a restricted investor?"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_business_1",
+    "scenario": "other_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "Will this affect my other Revolut products?",
       "Requesting money with a payment link"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_transfer_2",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Add money with an easy bank transfer",
       "Manage scheduled transfers"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_family_6",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "What happens if my joint account balance goes negative?",
       "Revolut closed my joint account"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_fx_7",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_fraud_8",
+    "scenario": "fraud_security_1",
     "intent_summary": "Fraud related query",
     "target_articles": [
       "Report a fraudulent transfer",
       "APP fraud reimbursement eligibility"
-    ]
+    ],
+    "topic_group": "fraud_security"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_business_9",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "What are Revolut Terminals?",
       "When will I receive my Revolut Terminal?"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "boutique_hotel_host_female_41",
-    "scenario": "boutique_hotel_host_female_41_business_10",
+    "scenario": "other_2",
     "intent_summary": "Business related query",
     "target_articles": [
       "Can I accept payments with Revolut Pro?",
       "How much does it cost to accept payments with Revolut Pro?"
-    ]
+    ],
+    "topic_group": "other"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_transfer_1",
+    "scenario": "transfers_1",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Does the account transfer impact my plan insurance cover?",
       "Add money with a bank transfer"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_family_2",
+    "scenario": "family_joint_1",
     "intent_summary": "Family related query",
     "target_articles": [
       "Managing joint account ownership",
       "I want to close my Joint account"
-    ]
+    ],
+    "topic_group": "family_joint"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_card_3",
+    "scenario": "cards_atm_1",
     "intent_summary": "Card related query",
     "target_articles": [
       "Manage my deposit cards",
       "My card deposit didn't work"
-    ]
+    ],
+    "topic_group": "cards_atm"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_savings_4",
+    "scenario": "savings_investments_1",
     "intent_summary": "Savings related query",
     "target_articles": [
       "Rate decrease on my Instant Access Savings",
       "Savings Challenge"
-    ]
+    ],
+    "topic_group": "savings_investments"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_plan_5",
+    "scenario": "plans_billing_1",
     "intent_summary": "Plan related query",
     "target_articles": [
       "Manage subscription payments to merchants",
       "Your paid plan subscription end date"
-    ]
+    ],
+    "topic_group": "plans_billing"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_business_6",
+    "scenario": "business_merchant_1",
     "intent_summary": "Business related query",
     "target_articles": [
       "How do I log in to my Revolut Terminal?",
       "eSIM on Revolut Terminals"
-    ]
+    ],
+    "topic_group": "business_merchant"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_travel_7",
+    "scenario": "travel_benefits_1",
     "intent_summary": "Travel related query",
     "target_articles": [
       "Who is Revolut's travel insurance provider?",
       "Can I cancel an Airport Fast Track pass? "
-    ]
+    ],
+    "topic_group": "travel_benefits"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_fx_8",
+    "scenario": "fx_exchange_1",
     "intent_summary": "Fx related query",
     "target_articles": [
       "What is Dynamic Currency Conversion (DCC)?",
       "What exchange rates does Revolut offer?"
-    ]
+    ],
+    "topic_group": "fx_exchange"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_login_9",
+    "scenario": "transfers_2",
     "intent_summary": "Login related query",
     "target_articles": [
       "Unsupported transfers sent from Revolut",
       "Supported currencies for outgoing transfers"
-    ]
+    ],
+    "topic_group": "transfers"
   },
   {
     "persona": "student_abroad_exchange_male_22",
-    "scenario": "student_abroad_exchange_male_22_transfer_10",
+    "scenario": "transfers_3",
     "intent_summary": "Transfer related query",
     "target_articles": [
       "Timeframes for transfers",
       "Bank transfer fees"
-    ]
+    ],
+    "topic_group": "transfers"
+  },
+  {
+    "persona": "eu_freelancer_traveling_uae_male_29",
+    "scenario": "cancel_recurring_subscription",
+    "intent_summary": "User wants to cancel a recurring merchant subscription charge",
+    "target_articles": [
+      "Manage subscription payments to merchants",
+      "Your paid plan subscription end date",
+      "Revolut — Kids & Teens subscription bundles"
+    ],
+    "topic_group": "plans_billing"
   }
 ]

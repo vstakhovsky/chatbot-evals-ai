@@ -24,6 +24,20 @@ from src.schemas import GeneratedQuery
 with open(GENERATE_QUERY_PROMPT_PATH, 'r') as f:
     GENERATE_PROMPT_TEMPLATE = f.read()
 
+# Word budgets from modifiers (must match modifiers.json)
+WORD_BUDGETS = {
+    "empty": (10, 30),
+    "calm_at_home": (15, 35),
+    "panic_security_fear": (10, 30),
+    "angry_after_waiting": (10, 30),
+    "confused_by_app_updates": (15, 40),
+    "rushing_with_typos": (8, 25),
+    "on_the_go_direct": (5, 18),
+    "voice_transcription": (20, 45),
+    "poor_internet_connection": (12, 35),
+    "vague_first_message": (8, 25),
+}
+
 # Load seeds
 def load_seeds():
     with open(PERSONAS_PATH) as f:
@@ -33,6 +47,47 @@ def load_seeds():
     with open(SCENARIOS_PATH) as f:
         scenarios = json.load(f)
     return personas, modifiers, scenarios
+
+def validate_query(query: str, modifier: str, target_articles: List[str]) -> tuple[bool, str]:
+    """Validate query against style rules. Returns (valid, error_message)."""
+    words = query.split()
+    word_count = len(words)
+
+    # Check word budget
+    min_words, max_words = WORD_BUDGETS.get(modifier, (10, 45))
+    if word_count < min_words or word_count > max_words:
+        return False, f"word count {word_count} outside budget [{min_words}, {max_words}]"
+
+    # Check for multiple question marks
+    if query.count('?') > 1:
+        return False, f"multiple question marks ({query.count('?')})"
+
+    # Check for double-intent markers
+    double_intent = ['also', 'additionally', 'plus', 'another thing', 'also need', 'and also']
+    query_lower = query.lower()
+    for marker in double_intent:
+        if marker in query_lower:
+            return False, f"double-intent marker '{marker}' found"
+
+    # Check for article title leakage (case-insensitive substring match)
+    for article in target_articles:
+        if len(article) > 25:  # Only check longer titles
+            if article.lower() in query_lower:
+                return False, f"quotes article title verbatim: {article[:40]}..."
+
+    # Special check for rushing_with_typos: must have visible typos
+    if modifier == "rushing_with_typos":
+        # Check for common typos: missing vowels, transposition, dropped words, all lowercase
+        has_typos = (
+            'i ' in query_lower or  # lowercase i
+            'dont ' in query_lower or 'cant ' in query_lower or 'wont ' in query_lower or  # missing apostrophe
+            'u ' in query_lower or 'pls ' in query_lower or 'thx ' in query_lower or  # abbreviations
+            query.count('?') == 0 and query.count('.') == 0  # no terminal punctuation
+        )
+        if not has_typos:
+            return False, "rushing_with_typos has no visible typos"
+
+    return True, ""
 
 # Format prompt for generation
 def format_prompt(persona, scenario, modifier):
@@ -51,33 +106,51 @@ def format_prompt(persona, scenario, modifier):
     )
 
 # Generate single query with structured output
-async def generate_query(client, persona, scenario, modifier, semaphore):
+async def generate_query(client, persona, scenario, modifier, semaphore, target_articles):
     async with semaphore:
         prompt = format_prompt(persona, scenario, modifier)
 
-        try:
-            resp = await client.chat.completions.create(
-                model=GENERATION_MODEL,
-                messages=[
-                    {'role': 'system', 'content': 'You are an expert at writing realistic user support queries. Output valid JSON only.'},
-                    {'role': 'user', 'content': prompt + '\n\nOutput your response as a JSON object with key "query" containing the generated text.'}
-                ],
-                temperature=0.9,
-                response_format={'type': 'json_object'}
-            )
+        # Retry loop for validation failures
+        for attempt in range(5):
+            try:
+                resp = await client.chat.completions.create(
+                    model=GENERATION_MODEL,
+                    messages=[
+                        {'role': 'system', 'content': 'You are an expert at writing realistic user support queries. Output valid JSON only.'},
+                        {'role': 'user', 'content': prompt + ('\n\nFeedback: FIX these issues and retry: ' + attempt_feedback if attempt > 0 else '') + '\n\nOutput your response as a JSON object with key "query" containing the generated text.'}
+                    ],
+                    temperature=0.9,
+                    response_format={'type': 'json_object'}
+                )
 
-            result = json.loads(resp.choices[0].message.content)
+                result = json.loads(resp.choices[0].message.content)
 
-            # Validate with pydantic
-            validated = GeneratedQuery(**result)
-            return validated.query
+                # Validate with pydantic
+                validated = GeneratedQuery(**result)
+                query = validated.query
 
-        except (ValidationError, json.JSONDecodeError, KeyError) as e:
-            print(f"Validation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
-            return None
-        except Exception as e:
-            print(f"Generation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
-            return None
+                # Style validation
+                is_valid, error_msg = validate_query(query, modifier['modifier'], target_articles)
+                if not is_valid:
+                    attempt_feedback = error_msg
+                    if attempt == 4:  # Last attempt
+                        print(f"FAIL: {persona['persona'][:30]}/{scenario}/{modifier['modifier']}: {error_msg}")
+                        return None
+                    continue  # Retry with feedback
+
+                return query
+
+            except (ValidationError, json.JSONDecodeError, KeyError) as e:
+                attempt_feedback = f"JSON/validation error: {str(e)[:50]}"
+                if attempt == 4:
+                    print(f"Validation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
+                    return None
+            except Exception as e:
+                print(f"Generation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
+                return None
+
+        attempt_feedback = ""
+        return None
 
 # Main generation function
 async def generate_dataset(max_rows=None, concurrency=8, confirm=True):
@@ -137,7 +210,11 @@ async def generate_dataset(max_rows=None, concurrency=8, confirm=True):
 
     async def generate_with_progress(combo):
         persona, scenario, modifier = combo
-        query = await generate_query(client, persona, scenario, modifier, semaphore)
+        # Get target_articles for this scenario
+        scenario_obj = next(s for s in scenarios if s['scenario'] == scenario)
+        target_articles = scenario_obj['target_articles']
+
+        query = await generate_query(client, persona, scenario, modifier, semaphore, target_articles)
         if query:
             results.append({
                 'persona': persona['persona'],
