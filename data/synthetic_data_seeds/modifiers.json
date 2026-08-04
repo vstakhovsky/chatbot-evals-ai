@@ -1,0 +1,52 @@
+[
+  {
+    "modifier": "empty",
+    "description": "Neutral baseline; clear ordinary phrasing, no emotional or stylistic overlay",
+    "style_instructions": "Write in clear, ordinary language. Complete sentences, standard grammar, no emotional urgency, no special formatting. The user is simply stating their question or problem."
+  },
+  {
+    "modifier": "calm_at_home",
+    "description": "Relaxed, complete sentences, has time, may add background context",
+    "style_instructions": "The user is at home with time to spare. Write in complete, well-formed sentences. May include background context or explanation. No urgency, clear and organized phrasing."
+  },
+  {
+    "modifier": "panic_security_fear",
+    "description": "Anxious and urgent; fears losing money or the account; pleads for immediate help",
+    "style_instructions": "The user is panicked about potential fraud or loss. Urgent, emotional tone. Use phrases like 'please help', 'now', 'emergency'. May have minor grammar issues due to haste. No greetings, straight to the problem."
+  },
+  {
+    "modifier": "angry_after_waiting",
+    "description": "Frustrated; already waited or contacted support before; demands resolution",
+    "style_instructions": "The user is angry and frustrated. Already tried to resolve this. Demands action. Short, clipped sentences. May use caps for emphasis. Expresses dissatisfaction with delay or previous lack of help."
+  },
+  {
+    "modifier": "confused_by_app_updates",
+    "description": "Describes screens/menus that don't match what they see; uncertain, questioning wording",
+    "style_instructions": "The user is confused and uncertain. Describes what they see but it doesn't make sense. Questions terminology or menu options. 'Where do I find', 'I don't see', 'what do you mean'. Uncertain, hesitant tone."
+  },
+  {
+    "modifier": "rushing_with_typos",
+    "description": "Hurried; typos, dropped words, lowercase, missing punctuation",
+    "style_instructions": "The user is typing very quickly. Expect typos, missing vowels, dropped words, inconsistent capitalization (mostly lowercase), missing punctuation at ends of sentences. Run-on sentences. Abbreviations. 'pls', 'thx', 'u' for 'you'."
+  },
+  {
+    "modifier": "on_the_go_direct",
+    "description": "Terse, minimal words, imperative; mid-task (checkout, ATM, airport, delivery)",
+    "style_instructions": "The user is in the middle of something time-sensitive (checkout, ATM line, boarding). Minimal words. Imperative mood. No greetings. Just the problem, now. 'help me', 'fix this', 'can't access'. Terse and direct."
+  },
+  {
+    "modifier": "voice_transcription",
+    "description": "Dictated run-on text; little or odd punctuation, filler words, spoken rhythm",
+    "style_instructions": "Voice-to-text output. Run-on sentences with minimal or odd punctuation (commas where periods should be). Filler words like 'um', 'uh', 'like'. Conversational rhythm. May include transcription errors like 'their' for 'they're' or 'hear' for 'here'."
+  },
+  {
+    "modifier": "poor_internet_connection",
+    "description": "Mentions failing uploads/loading/retries; asks what to do with a bad connection",
+    "style_instructions": "The user is experiencing connectivity issues. Mentions things not loading, uploads failing, connection dropping, 'retry', 'timeout', 'stuck at loading'. Asks what to do when connection is poor or if action will complete despite error."
+  },
+  {
+    "modifier": "vague_first_message",
+    "description": "Imprecise problem description; generic or wrong terminology; symptoms only, no feature names",
+    "style_instructions": "The user is describing symptoms but doesn't know the right terminology. Uses generic or incorrect words for features. 'the thing', 'that button', 'my money disappeared', 'charged twice'. No technical terms. Vague about what exactly happened or what feature is involved."
+  }
+]

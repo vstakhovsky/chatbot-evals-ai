@@ -1,0 +1,122 @@
+[
+  {
+    "persona": "eu_freelancer_traveling_uae_male_29",
+    "age": 29,
+    "region": "Dubai, UAE",
+    "plan_products": "Premium + Pro",
+    "english": "fluent",
+    "description": "EU resident freelancer currently staying in Dubai; receives EUR and GBP, spends in AED"
+  },
+  {
+    "persona": "ultra_globetrotter_executive_female_42",
+    "age": 42,
+    "region": "UK",
+    "plan_products": "Ultra (Airport Lounges, Travel/Flight Cancel Insurance, eSIM, Unlimited FX)",
+    "english": "native",
+    "description": "High net-worth expat moving between UAE and UK; lounge passes, eSIM top-ups, high ATM limits, travel insurance claims (Chubb/Qover)"
+  },
+  {
+    "persona": "senior_citizen_uk_female_67",
+    "age": 67,
+    "region": "Edinburgh, UK",
+    "plan_products": "Standard (Physical Debit Card, Local Transfers, Basic Savings)",
+    "english": "native",
+    "description": "Low digital literacy senior; opened account for holiday money; struggles with navigation, PIN/CVV, spending limits, statements"
+  },
+  {
+    "persona": "b2b_ecommerce_merchant_male_31",
+    "age": 31,
+    "region": "Milan, IT",
+    "plan_products": "Business Grow (Invoices, Corporate Cards, Shopify Plugin, Mass Transfers)",
+    "english": "fluent",
+    "description": "E-commerce merchant, online clothing brand; multi-currency corporate cards, Shopify gateway, supplier invoices, payout settlements"
+  },
+  {
+    "persona": "genz_crypto_trader_female_20",
+    "age": 20,
+    "region": "Amsterdam, NL",
+    "plan_products": "Plus (Crypto Staking, Fractional Stocks, Single-Use Virtual Cards)",
+    "english": "fluent",
+    "description": "Tech-savvy Gen Z student, micro-investor; crypto staking, disposable virtual cards, referral links, RevPoints"
+  },
+  {
+    "persona": "migrant_worker_remittance_male_38",
+    "age": 38,
+    "region": "Paris, FR",
+    "plan_products": "Standard (Cross-Border Remittances, Multi-currency Wallets, Cash Top-ups)",
+    "english": "basic",
+    "description": "Expat blue-collar worker; weekly remittances to Morocco/non-EEA; sensitive to speed, IBAN routing fees, FX markups"
+  },
+  {
+    "persona": "young_parent_family_budget_female_34",
+    "age": 34,
+    "region": "Dublin, IE",
+    "plan_products": "Premium + Joint + Kids & Teens (<18)",
+    "english": "native",
+    "description": "Family finance manager; Joint Account, Kids & Teens cards, Pocket round-ups, Everyday Purchase Protection"
+  },
+  {
+    "persona": "retail_investor_stocks_male_45",
+    "age": 45,
+    "region": "Berlin, DE",
+    "plan_products": "Metal (Instant Access Savings, ETFs, Flexible Funds, Personal Loans)",
+    "english": "fluent",
+    "description": "Wealth accumulator; high savings balance, trades ETFs, monitors daily AER, applies for Revolut Loans"
+  },
+  {
+    "persona": "cafe_owner_smb_female_52",
+    "age": 52,
+    "region": "Lisbon, PT",
+    "plan_products": "Business Basic + Revolut Terminal (POS Hardware, eSIM Terminal, Staff Cards)",
+    "english": "basic",
+    "description": "Brick-and-mortar coffee shop; Terminal/Reader hardware, Tap to Pay on iPhone, daily settlement, VAT Tax Pockets"
+  },
+  {
+    "persona": "gig_courier_instant_pay_male_27",
+    "age": 27,
+    "region": "London, UK",
+    "plan_products": "Standard + Pro (Revolut Pro, Freelancer IBAN, On-Demand Early Pay, Cashback)",
+    "english": "native",
+    "description": "Gig economy freelancer; instant payouts, on-demand early salary, Pro 1% cashback, Apple Pay top-ups"
+  },
+  {
+    "persona": "digital_nomad_tax_resident_female_33",
+    "age": 33,
+    "region": "Larnaca, Cyprus",
+    "plan_products": "Metal (Multi-currency Pockets, Open Banking, Car Hire Excess, DCC)",
+    "english": "fluent",
+    "description": "Remote engineer/nomad; links external banks via Open Banking, DCC at foreign ATMs, car rental excess insurance"
+  },
+  {
+    "persona": "cross_border_commuter_female_37",
+    "age": 37,
+    "region": "Geneva, CH / France",
+    "plan_products": "Premium (CHF/EUR Dual Accounts, Scheduled Transfers, Direct Debits)",
+    "english": "basic",
+    "description": "Earns CHF, spends EUR; scheduled currency conversions, SEPA Direct Debits, recurring bill Pockets"
+  },
+  {
+    "persona": "crypto_web3_enthusiast_male_24",
+    "age": 24,
+    "region": "Sofia, BG",
+    "plan_products": "Standard (BGN→EUR Migration, Crypto Withdrawals, Passkeys)",
+    "english": "basic",
+    "description": "Tech/crypto early adopter; BGN→EUR transition, crypto wallet transfers, passkey 2FA, web app login"
+  },
+  {
+    "persona": "boutique_hotel_host_female_41",
+    "age": 41,
+    "region": "Athens, GR",
+    "plan_products": "Pro (Payment Links, Invoices, Revolut Pay, Cancellation Claims)",
+    "english": "fluent",
+    "description": "Short-term host; Revolut Pay checkout, Payment Links, Pro invoices, client chargebacks"
+  },
+  {
+    "persona": "student_abroad_exchange_male_22",
+    "age": 22,
+    "region": "Vilnius, LT",
+    "plan_products": "Standard (Split Bills, Revtag Transfers, RevPoints, Airport Fast Track)",
+    "english": "fluent",
+    "description": "Student, heavy P2P user; Revtag transfers, split bills, RevPoints, Airport Fast Track passes"
+  }
+]
