@@ -4,15 +4,15 @@
 15 personas × 10 scenarios × 10 modifiers = 1500 queries
 """
 
+import argparse
 import asyncio
 import json
-import argparse
 from typing import List
 
 import pandas as pd
 from openai import AsyncOpenAI
-from tqdm import tqdm
 from pydantic import ValidationError
+from tqdm import tqdm
 
 from src.config import *
 from src.schemas import GeneratedQuery
@@ -68,17 +68,18 @@ def validate_query(query: str, modifier: str, target_articles: List[str]) -> tup
 
     # Check for article title leakage (case-insensitive substring match)
     for article in target_articles:
-        if len(article) > 25:  # Only check longer titles
-            if article.lower() in query_lower:
-                return False, f"quotes article title verbatim: {article[:40]}..."
+        if len(article) > 25 and article.lower() in query_lower:
+            return False, f"quotes article title verbatim: {article[:40]}..."
 
     # Special check for rushing_with_typos: must have visible typos
     if modifier == "rushing_with_typos":
         # Check for common typos: missing vowels, transposition, dropped words, all lowercase
         has_typos = (
             'i ' in query_lower or  # lowercase i
-            'dont ' in query_lower or 'cant ' in query_lower or 'wont ' in query_lower or  # missing apostrophe
-            'u ' in query_lower or 'pls ' in query_lower or 'thx ' in query_lower or  # abbreviations
+            'dont ' in query_lower or 'cant ' in query_lower or
+            'wont ' in query_lower or  # missing apostrophe
+            'u ' in query_lower or 'pls ' in query_lower or
+            'thx ' in query_lower or  # abbreviations
             query.count('?') == 0 and query.count('.') == 0  # no terminal punctuation
         )
         if not has_typos:
@@ -103,7 +104,9 @@ def format_prompt(persona, scenario, modifier):
     )
 
 # Generate single query with structured output
-async def generate_query(client, persona, scenario, modifier, semaphore, target_articles):
+async def generate_query(
+    client, persona, scenario, modifier, semaphore, target_articles
+):
     async with semaphore:
         prompt = format_prompt(persona, scenario, modifier)
 
@@ -113,8 +116,23 @@ async def generate_query(client, persona, scenario, modifier, semaphore, target_
                 resp = await client.chat.completions.create(
                     model=GENERATION_MODEL,
                     messages=[
-                        {'role': 'system', 'content': 'You are an expert at writing realistic user support queries. Output valid JSON only.'},
-                        {'role': 'user', 'content': prompt + ('\n\nFeedback: FIX these issues and retry: ' + attempt_feedback if attempt > 0 else '') + '\n\nOutput your response as a JSON object with key "query" containing the generated text.'}
+                        {
+                            'role': 'system',
+                            'content': (
+                                'You are an expert at writing realistic '
+                                'user support queries. Output valid JSON only.'
+                            )
+                        },
+                        {
+                            'role': 'user',
+                            'content': (
+                                prompt +
+                                ('\n\nFeedback: FIX these issues and retry: ' +
+                                 attempt_feedback if attempt > 0 else '') +
+                                '\n\nOutput your response as a JSON object '
+                                'with key "query" containing the generated text.'
+                            )
+                        }
                     ],
                     temperature=0.9,
                     response_format={'type': 'json_object'}
@@ -127,11 +145,16 @@ async def generate_query(client, persona, scenario, modifier, semaphore, target_
                 query = validated.query
 
                 # Style validation
-                is_valid, error_msg = validate_query(query, modifier['modifier'], target_articles)
+                is_valid, error_msg = validate_query(
+                    query, modifier['modifier'], target_articles
+                )
                 if not is_valid:
                     attempt_feedback = error_msg
                     if attempt == 4:  # Last attempt
-                        print(f"FAIL: {persona['persona'][:30]}/{scenario}/{modifier['modifier']}: {error_msg}")
+                        print(
+                            f"FAIL: {persona['persona'][:30]}/"
+                            f"{scenario}/{modifier['modifier']}: {error_msg}"
+                        )
                         return None
                     continue  # Retry with feedback
 
@@ -140,10 +163,16 @@ async def generate_query(client, persona, scenario, modifier, semaphore, target_
             except (ValidationError, json.JSONDecodeError, KeyError) as e:
                 attempt_feedback = f"JSON/validation error: {str(e)[:50]}"
                 if attempt == 4:
-                    print(f"Validation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
+                    print(
+                        f"Validation error for {persona['persona']}/"
+                        f"{scenario}/{modifier['modifier']}: {e}"
+                    )
                     return None
             except Exception as e:
-                print(f"Generation error for {persona['persona']}/{scenario}/{modifier['modifier']}: {e}")
+                print(
+                    f"Generation error for {persona['persona']}/"
+                    f"{scenario}/{modifier['modifier']}: {e}"
+                )
                 return None
 
         attempt_feedback = ""
@@ -172,8 +201,13 @@ async def generate_dataset(max_rows=None, concurrency=8, confirm=True):
     if SYNTHETIC_QUERIES_PATH.exists():
         try:
             df = pd.read_csv(SYNTHETIC_QUERIES_PATH)
-            existing = set(zip(df['persona'], df['scenario'], df['modifier']))
-            print(f'Resume: {len(existing)} done, {len(combinations) - len(existing)} missing')
+            existing = set(
+                zip(df['persona'], df['scenario'], df['modifier'])
+            )
+            print(
+                f'Resume: {len(existing)} done, '
+                f'{len(combinations) - len(existing)} missing'
+            )
         except Exception as e:
             print(f'Could not load existing file: {e}')
 
@@ -211,7 +245,9 @@ async def generate_dataset(max_rows=None, concurrency=8, confirm=True):
         scenario_obj = next(s for s in scenarios if s['scenario'] == scenario)
         target_articles = scenario_obj['target_articles']
 
-        query = await generate_query(client, persona, scenario, modifier, semaphore, target_articles)
+        query = await generate_query(
+            client, persona, scenario, modifier, semaphore, target_articles
+        )
         if query:
             results.append({
                 'persona': persona['persona'],
@@ -254,11 +290,25 @@ def save_checkpoint(new_results, existing_keys):
     combined.to_csv(SYNTHETIC_QUERIES_PATH, index=False)
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate synthetic queries dataset')
-    parser.add_argument('--max-rows', type=int, default=None, help='Max rows to generate (for testing)')
-    parser.add_argument('--concurrency', type=int, default=8, help='Concurrent API calls')
-    parser.add_argument('--model', type=str, default=None, help='Override generation model')
-    parser.add_argument('--yes', action='store_true', help='Skip confirmation prompts')
+    parser = argparse.ArgumentParser(
+        description='Generate synthetic queries dataset'
+    )
+    parser.add_argument(
+        '--max-rows', type=int, default=None,
+        help='Max rows to generate (for testing)'
+    )
+    parser.add_argument(
+        '--concurrency', type=int, default=8,
+        help='Concurrent API calls'
+    )
+    parser.add_argument(
+        '--model', type=str, default=None,
+        help='Override generation model'
+    )
+    parser.add_argument(
+        '--yes', action='store_true',
+        help='Skip confirmation prompts'
+    )
 
     args = parser.parse_args()
 
@@ -266,7 +316,13 @@ def main():
         global GENERATION_MODEL
         GENERATION_MODEL = args.model
 
-    asyncio.run(generate_dataset(max_rows=args.max_rows, concurrency=args.concurrency, confirm=not args.yes))
+    asyncio.run(
+        generate_dataset(
+            max_rows=args.max_rows,
+            concurrency=args.concurrency,
+            confirm=not args.yes
+        )
+    )
 
 if __name__ == '__main__':
     main()

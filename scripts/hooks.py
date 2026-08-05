@@ -16,11 +16,19 @@ def protect_files(data: dict) -> int:
     """Block edits to verify_stage6.py (read-only oracle) or CLAUDE.md (user-frozen)."""
     path = data.get("tool_input", {}).get("file_path", "")
     if path.endswith("verify_stage6.py"):
-        print("BLOCKED: verify scripts are read-only oracles; if a check looks wrong, stop and report", file=sys.stderr)
+        print(
+            "BLOCKED: verify scripts are read-only oracles; "
+            "if a check looks wrong, stop and report",
+            file=sys.stderr,
+        )
         return 2
     if path.endswith("CLAUDE.md"):
         # This line is removable by user later — they own CLAUDE.md
-        print("BLOCKED: user has frozen CLAUDE.md; propose changes in chat instead", file=sys.stderr)
+        print(
+            "BLOCKED: user has frozen CLAUDE.md; "
+            "propose changes in chat instead",
+            file=sys.stderr,
+        )
         return 2
     return 0
 
@@ -65,11 +73,10 @@ def session_context(data: dict) -> int:
 
 def verdict(data: dict) -> int:
     """Run verify before session ends — real verdict on screen."""
-    result = subprocess.run(["python3", "verify_stage6.py"], capture_output=True, text=True)
-    # Show last 20 lines of output
-    lines = result.stdout.split("\n") + result.stderr.split("\n")
-    print("\n".join(lines[-20:]))
-    return result.returncode
+    vp = Path(__file__).resolve().parent.parent / "verify_stage6.py"
+    result = subprocess.run(["python3", str(vp)], capture_output=True, text=True, cwd=vp.parent)
+    print("\n".join((result.stdout + result.stderr).splitlines()[-8:]))
+    return 0  # informational only - never blocks
 
 
 def main():

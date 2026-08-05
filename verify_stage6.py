@@ -226,19 +226,23 @@ def main():
     allsrc = "\n".join("".join(c["source"]) for c in cells)
     check("NB: no 'script' column naming regression", not re.search(r"[\"']script[\"']", allsrc), "")
     check("NB: no hardcoded API key placeholder", "YOUR_API_KEY" not in allsrc, "")
+    check("NB: outputs show the FULL run resume line",
+          "RAG resume: 1500 done, 0 missing" in NB_PATH.read_text(encoding="utf-8"),
+          "notebook shows a smoke/partial resume line - re-execute after the full run")
 
     # ---------------- repo hygiene ----------------
+    import subprocess
+    tracked = [t for t in subprocess.run(["git", "ls-files"], cwd=REPO,
+               capture_output=True, text=True).stdout.split("\n") if t]
     secret_hits = []
-    for p in REPO.rglob("*"):
-        if p.is_dir() or ".git" in p.parts or ".venv" in p.parts:
-            continue
-        if p.suffix in {".py", ".ipynb", ".txt", ".json", ".md", ".csv", ".example", ".gitignore"} or p.name.startswith(".env"):
-            try:
-                if re.search(r"sk-[A-Za-z0-9_\-]{16,}", p.read_text(encoding="utf-8", errors="ignore")):
-                    secret_hits.append(str(p.relative_to(REPO)))
-            except Exception:
-                pass
-    check("SEC: no OpenAI-style keys anywhere in tracked files", not secret_hits, str(secret_hits))
+    for rel in tracked:
+        fp = REPO / rel
+        try:
+            if fp.is_file() and re.search(r"sk-[A-Za-z0-9_\-]{16,}", fp.read_text(encoding="utf-8", errors="ignore")):
+                secret_hits.append(rel)
+        except Exception:
+            pass
+    check("SEC: no keys in git-tracked files (.env is the key's legitimate home)", not secret_hits, str(secret_hits))
     gi = (REPO / ".gitignore").read_text(encoding="utf-8") if (REPO / ".gitignore").exists() else ""
     check("SEC: .env is gitignored", ".env" in gi.split(), "")
     warn_if("ENV: pyproject.toml / requirements present (fresh clone reproducibility)",

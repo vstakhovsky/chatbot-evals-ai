@@ -13,7 +13,9 @@ class GeneratedQuery(BaseModel):
         if not v:
             raise ValueError("Query cannot be empty")
         # Basic sanity checks
-        if v.lower().startswith("hello") or v.lower().startswith("hi "):
-            if len(v) < 20:
-                raise ValueError("Query cannot be just a greeting")
+        if (
+            (v.lower().startswith("hello") or v.lower().startswith("hi ")) and
+            len(v) < 20
+        ):
+            raise ValueError("Query cannot be just a greeting")
         return v
