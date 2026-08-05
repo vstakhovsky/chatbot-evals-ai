@@ -18,7 +18,7 @@ data/synthetic_data_seeds/) answered by the RAG assistant; answers and contexts 
 ## File inventory (whitelist; anything off-list is deleted or must justify itself)
 Product (mirrors ArTeria21/llm-eval-course/hw1):
   notebooks/faq_rag_chatbot.ipynb
-  src/generate_dataset.py · src/rag_evaluate.py · src/schemas.py · src/config.py
+  src/generate_dataset.py · src/schemas.py · src/config.py
   prompts/rag_system.txt · prompts/generate_query.txt   (deviation: reference inlines prompts)
   data/revolut_help_articles.jsonl · data/synthetic_revolut_queries.csv
   data/synthetic_revolut_rag_outputs.csv · data/synthetic_data_seeds/{personas,modifiers,scenarios}.json
@@ -30,8 +30,7 @@ Stage 7 budget (for later): src/judges.py (reference bar: 220 LOC, one file)
   + prompts/judges/*.txt · specs/stage7_judges.md · verify_stage7.py
 
 ## Accepted deviations
-- RAG loop runs via src/rag_evaluate.py detached (crash resilience); notebook Section 6 loads
-  the final CSV and executes the G4 checks. <2025-01-XX>
+- RAG loop lives in notebook Section 6 (reference shape); the script detour is reverted — the bulk of rows is already answered, the remaining run is short. <2025-01-05>
 - Scenario ids are descriptive snake_case; the 9 golden ids preserved for benchmark joins. <2025-01-XX>
 
 ## Out of scope

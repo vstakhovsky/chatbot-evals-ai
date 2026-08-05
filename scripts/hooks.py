@@ -32,14 +32,14 @@ def guard_bash(data: dict) -> int:
     try:
         cmd = data.get("tool_input", {}).get("command", "")
 
-        # Single-writer lock for rag_evaluate
-        if "rag_evaluate" in cmd:
+        # Single-writer lock for rag_evaluate and nbconvert on this notebook
+        if "rag_evaluate" in cmd or ("nbconvert" in cmd and "faq_rag_chatbot.ipynb" in cmd):
             lockfile = Path("data/.rag_eval.lock")
             if lockfile.exists():
                 try:
                     pid = int(lockfile.read_text().strip())
                     os.kill(pid, 0)  # Check if process is alive
-                    print("BLOCKED: rag_evaluate already running (live lockfile)", file=sys.stderr)
+                    print("BLOCKED: RAG evaluation already running (live lockfile)", file=sys.stderr)
                     return 2
                 except (OSError, ValueError):
                     pass  # Lock stale or invalid
