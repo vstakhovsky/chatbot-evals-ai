@@ -34,7 +34,7 @@ Stage 7 budget (for later): src/judges.py (reference bar: 220 LOC, one file)
 - RAG loop lives in notebook Section 6 (reference shape); the script detour is reverted — the bulk of rows is already answered, the remaining run is short. <2025-01-05>
 - Scenario ids are descriptive snake_case; the 9 golden ids preserved for benchmark joins. <2025-01-XX>
 - reviews/ added for cross-model validation audit evidence; dataset read-only during audit. <2025-01-05>
-- README.md added post-closure for repository presentation. <2025-01-05>
+- README.md added post-closure for repository presentation. <2025-01-18>
 
 ## Out of scope
 Judges, metrics, GEPA, Arize → their own specs when those stages start.
