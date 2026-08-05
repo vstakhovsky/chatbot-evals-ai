@@ -26,7 +26,7 @@ Trust layer (price of agent delegate, capped, may not grow):
   CLAUDE.md · specs/rules.md · specs/stage6_dataset_rag.md · verify_stage6.py
   scripts/hooks.py · .claude/settings.json
   reviews/ (audit evidence, cross-model validation)
-Infra: pyproject.toml · uv.lock · .env.example · .gitignore
+Infra: pyproject.toml · uv.lock · .env.example · .gitignore · README.md
 Stage 7 budget (for later): src/judges.py (reference bar: 220 LOC, one file)
   + prompts/judges/*.txt · specs/stage7_judges.md · verify_stage7.py
 
@@ -34,6 +34,7 @@ Stage 7 budget (for later): src/judges.py (reference bar: 220 LOC, one file)
 - RAG loop lives in notebook Section 6 (reference shape); the script detour is reverted — the bulk of rows is already answered, the remaining run is short. <2025-01-05>
 - Scenario ids are descriptive snake_case; the 9 golden ids preserved for benchmark joins. <2025-01-XX>
 - reviews/ added for cross-model validation audit evidence; dataset read-only during audit. <2025-01-05>
+- README.md added post-closure for repository presentation. <2025-01-05>
 
 ## Out of scope
 Judges, metrics, GEPA, Arize → their own specs when those stages start.
