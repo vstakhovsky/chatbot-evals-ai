@@ -12,3 +12,18 @@ dependencies = [
     "jupyter",
     "nbconvert",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "vulture",
+    "radon",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "SIM", "ARG"]
+exclude = ["notebooks/", "data/"]
